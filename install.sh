@@ -17,7 +17,7 @@ if [ -d ./templates ];then
 fi
 
 echo //////////////////////////
-echo "Install plug? (y/n)"
+echo "Install vim-plug? (y/n)"
 echo //////////////////////////
 echo ;
 read answer
@@ -31,10 +31,59 @@ case $answer in
 			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 		echo /////////////////////////////////
-		echo Now run vim and type :PlugInstall
+		echo After install run vim and type :PlugInstall
 		echo ///////////////////////////////// ;;
 	[nN]*)
 		echo ;
-		echo Done ;;
+		echo Ok ;;
 esac
+
+echo //////////////////////////
+echo "Install Vundle? (y/n)"
+echo //////////////////////////
+echo ;
+read answer
+case $answer in
+	[yY])
+		echo //////////////////////////////
+		echo     Reinstall Vim for Vundle
+		echo //////////////////////////////
+		echo ;
+		brew install vim
+		brew install cmake
+
+		echo /////////////////////
+		echo     Download Vundle
+		echo /////////////////////
+		echo ;
+
+		git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+		echo /////////////////////
+		echo     Update .vimrc
+		echo /////////////////////
+		echo ;
+
+		echo "set nocompatible" >> ~/.vimrc
+		echo "filetype off" >> ~/.vimrc
+		echo "set rtp+=~/.vim.bundle/Vundle.vim" >> ~/.vimrc
+		echo "call vundle#begin()" >> ~/.vimrc
+		echo "Plugin 'VundleVim/Vundle.vim'" >> ~/.vimrc
+		echo "Plugin 'Valloric/YouCompleteMe'" >> ~/.vimrc
+		echo "call vundle#end()" >> ~/.vimrc
+		echo "filetype plugin indent on" >> ~/.vimrc
+
+		echo /////////////////////////////////
+		echo After install run vim and type :PluginInstall
+		echo ;
+		echo exit Vim and go to ~/.vim/bundle/YouCompleteMe
+		echo and run
+		echo python3 install.py --all
+		echo ///////////////////////////////// ;;
+	[nN]*)
+		echo ;
+		echo Ok ;;
+esac
+		echo;
+		echo Done ;
 exit 0
