@@ -39,6 +39,12 @@ case $answer in
 esac
 
 echo //////////////////////////
+echo "macos or linux (1/2)"
+echo //////////////////////////
+echo ;
+read OS
+
+echo //////////////////////////
 echo "Install Vundle? (y/n)"
 echo //////////////////////////
 echo ;
@@ -49,8 +55,12 @@ case $answer in
 		echo     Reinstall Vim for Vundle
 		echo //////////////////////////////
 		echo ;
-		brew install vim
-		brew install cmake
+		case $OS in
+			[1])
+				brew install vim
+				brew install cmake ;;
+			[2]*)
+		esac
 
 		echo /////////////////////
 		echo     Download Vundle
