@@ -76,7 +76,7 @@ case $answer in
 
 		echo "set nocompatible" >> ~/.vimrc
 		echo "filetype off" >> ~/.vimrc
-		echo "set rtp+=~/.vim.bundle/Vundle.vim" >> ~/.vimrc
+		echo "set rtp+=~/.vim/bundle/Vundle.vim" >> ~/.vimrc
 		echo "call vundle#begin()" >> ~/.vimrc
 		echo "Plugin 'VundleVim/Vundle.vim'" >> ~/.vimrc
 		echo "Plugin 'Valloric/YouCompleteMe'" >> ~/.vimrc
